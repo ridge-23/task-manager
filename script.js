@@ -3,7 +3,8 @@ const addTaskButton = document.getElementById("add-task-btn");
 const taskList = document.getElementById("task-list");
 
 
-addTaskButton,addEventListener("click", function () {
+
+function addTask() {
     const taskText = taskInput.value.trim();
 
     if (taskText ==="") {
@@ -31,7 +32,15 @@ addTaskButton,addEventListener("click", function () {
 
 
     taskInput.value = "";
+    taskInput.focus();
 
-});
+}
+addTaskButton,addEventListener("click", addTask);
+
+taskInput.addEventListener("keydown", function (event){
+    if (event.key === "Enter") {
+        addTask();
+    }
+})
 
 
