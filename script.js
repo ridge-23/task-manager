@@ -3,6 +3,7 @@ const addTaskButton = document.getElementById("add-task-btn");
 const taskList = document.getElementById("task-list");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const taskCount = document.getElementById("task-count")
+const clearCompletedButton = document.getElementById("clear-completed-btn")
 
 let currentFilter = "all";
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -65,6 +66,15 @@ function renderTasks() {
 
     updateTaskCount();
 };
+
+clearCompletedButton.addEventListener("click", function() {
+    tasks = tasks.filter(function (task){
+        return !task.completed;
+    });
+    saveTasks();
+    renderTasks();
+    
+});
 
 function addTask() {
     const taskText = taskInput.value.trim();
