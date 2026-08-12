@@ -63,15 +63,23 @@ function renderTasks() {
 
     });
 
-    filterButtons.forEach(function (button) {
-        button.addEventListener("click", function(){
-            currentFilter = button.dataset.filter;
-            renderTasks();
-        });
-        
-    });
-
+   
 }
+
+filterButtons.forEach(function (button) {
+    button.addEventListener("click", function(){
+        currentFilter = button.dataset.filter;
+        
+        filterButtons.forEach(function (btn) {
+            btn.classList.remove("active")
+        }),
+
+        button.classList.add("active")
+
+        renderTasks();
+    });
+        
+});
 
 function addTask() {
     const taskText = taskInput.value.trim();
