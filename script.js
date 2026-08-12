@@ -1,7 +1,9 @@
 const taskInput = document.getElementById("task-input");
 const addTaskButton = document.getElementById("add-task-btn");
 const taskList = document.getElementById("task-list");
+const filterButtons = document.querySelectorAll(".filter-btn");
 
+let currentFilter = "all";
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 function saveTasks() {
@@ -10,6 +12,19 @@ function saveTasks() {
 
 function renderTasks() {
     taskList.innerHTML = "";
+    let filteredTasks = tasks;
+
+    // if (currentFilter === "active") {
+    //     filteredTasks = tasks.filter(function (task) {
+    //         return !task.completed;
+    //     });
+    // }
+
+    // if (currentFilter === "completed") {
+    //     filteredTasks = tasks.filter(function (task) {
+    //         return task.completed;
+    //     });
+    // }
 
     tasks.forEach(task => {
         const taskItem = document.createElement("li");
